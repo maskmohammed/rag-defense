@@ -1,0 +1,27 @@
+# Environnement virtuel
+backend/venv/
+venv/
+
+# Fichiers Python
+__pycache__/
+*.pyc
+
+# Base de données
+data/db/rag.db
+
+# Logs
+data/logs/
+*.log
+
+# Index vectoriel
+data/index/
+
+# Fichiers temporaires
+*.sqlite3
+*.db
+
+# VS Code
+.vscode/
+
+# Windows
+Thumbs.db

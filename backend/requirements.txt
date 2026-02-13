@@ -1,0 +1,13 @@
+# ==============================
+# RAG Defense PFE - Backend
+# Environnement Windows - Local
+# ==============================
+
+# API REST locale
+Flask==3.0.2
+
+# Gestion des variables d'environnement (optionnel mais propre)
+python-dotenv==1.0.1
+
+# Sécurité (hash des mots de passe)
+Werkzeug==3.0.1

@@ -1,0 +1,19 @@
+GUIDE DE SECURITE – BONNES PRATIQUES GENERALES
+
+1. Principes fondamentaux
+La sécurité repose sur :
+- la vigilance,
+- la discipline,
+- le respect des procédures établies.
+
+2. Accès aux installations
+L’accès est limité aux personnes autorisées. Toute présence non identifiée doit être signalée.
+
+3. Protection des informations
+Les documents internes doivent être protégés contre toute diffusion non autorisée.
+
+4. Sécurité informatique
+Les postes de travail doivent être verrouillés après utilisation. Les mots de passe doivent rester confidentiels.
+
+5. Conclusion
+Le respect des règles de sécurité garantit la stabilité et la fiabilité des opérations simulées.

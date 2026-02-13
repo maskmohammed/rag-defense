@@ -1,0 +1,22 @@
+GUIDE DE COMMUNICATION – ORGANISATION DES ECHANGES
+
+1. Objectif
+Ce guide encadre les échanges d’informations au sein d’une unité simulée.
+
+2. Canaux de communication
+Les communications internes peuvent utiliser :
+- messagerie sécurisée locale,
+- comptes rendus écrits,
+- réunions planifiées.
+
+3. Hiérarchie des messages
+Les messages urgents doivent être traités en priorité. Les messages informatifs sont archivés.
+
+4. Clarté et précision
+Toute communication doit être :
+- claire,
+- concise,
+- structurée.
+
+5. Archivage
+Les communications importantes sont conservées pour assurer la traçabilité.

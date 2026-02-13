@@ -1,0 +1,19 @@
+RAPPORT LOGISTIQUE - UNITE SIMULEE
+
+1. Introduction
+Ce rapport présente l’organisation logistique d’une unité simulée dans le cadre d’un exercice académique.
+
+2. Organisation du matériel
+Le matériel est réparti selon trois catégories :
+- équipements techniques
+- équipements de communication
+- ressources opérationnelles
+
+3. Gestion des ressources
+La gestion des ressources repose sur :
+- inventaire hebdomadaire
+- contrôle des flux
+- traçabilité des mouvements
+
+4. Conclusion
+Une organisation structurée améliore la réactivité opérationnelle.

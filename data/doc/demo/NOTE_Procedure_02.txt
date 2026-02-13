@@ -1,0 +1,22 @@
+NOTE DE PROCEDURE – GESTION DES INCIDENTS SIMULES
+
+1. Introduction
+Cette note décrit la conduite à tenir en cas d’incident technique dans un environnement simulé.
+
+2. Identification
+Tout incident doit être identifié rapidement :
+- panne d’équipement,
+- perte de communication,
+- anomalie de fonctionnement.
+
+3. Signalement
+L’incident est signalé au responsable désigné. Un rapport synthétique est rédigé.
+
+4. Mesures correctives
+Les mesures suivantes peuvent être appliquées :
+- remplacement du matériel défaillant,
+- redémarrage des systèmes,
+- modification temporaire de la procédure.
+
+5. Archivage
+Chaque incident est enregistré dans un registre interne pour analyse ultérieure.

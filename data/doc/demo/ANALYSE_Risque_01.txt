@@ -1,0 +1,25 @@
+ANALYSE DE RISQUE – ENVIRONNEMENT SIMULE
+
+1. Introduction
+Cette analyse identifie les risques potentiels liés aux opérations simulées.
+
+2. Identification des risques
+Les principaux risques identifiés sont :
+- défaillance technique,
+- erreur humaine,
+- mauvaise coordination.
+
+3. Evaluation
+Chaque risque est évalué selon :
+- sa probabilité,
+- son impact,
+- sa criticité.
+
+4. Mesures de mitigation
+Pour chaque risque :
+- définir une procédure préventive,
+- prévoir un plan de secours,
+- désigner un responsable.
+
+5. Conclusion
+L’anticipation des risques améliore la résilience du système.

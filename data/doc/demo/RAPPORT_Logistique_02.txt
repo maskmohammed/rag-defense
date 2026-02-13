@@ -1,0 +1,23 @@
+RAPPORT LOGISTIQUE – PHASE DE DEPLOIEMENT SIMULEE
+
+1. Contexte
+Dans le cadre d’un exercice académique simulé, une unité doit être déployée dans une zone fictive. Ce rapport présente l’organisation logistique mise en place afin d’assurer la continuité opérationnelle.
+
+2. Planification des ressources
+La planification repose sur trois axes principaux :
+- estimation des besoins matériels,
+- gestion des stocks disponibles,
+- anticipation des besoins supplémentaires.
+
+Un inventaire initial est réalisé avant toute opération. Les ressources sont catégorisées selon leur criticité.
+
+3. Transport et distribution
+Le transport du matériel est planifié selon des itinéraires optimisés. Les flux sont organisés pour éviter les ruptures d’approvisionnement.
+
+La distribution interne est coordonnée par un responsable logistique désigné.
+
+4. Suivi et traçabilité
+Chaque mouvement de matériel est enregistré. Une fiche de suivi accompagne chaque lot afin de garantir la traçabilité.
+
+5. Conclusion
+Une planification logistique structurée améliore l’efficacité globale et réduit les risques d’interruption d’activité.
