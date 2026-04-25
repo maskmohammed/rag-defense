@@ -53,7 +53,8 @@ J --> B
 
 ## 📸 Interface (exemple)
 
-![App Screenshot](https://via.placeholder.com/800x400?text=RAG+Defense+Interface)
+![App Screenshot](https://via.placeholder.com/800x400?text=RAG+Defense+Interface)<img width="1730" height="909" alt="image" src="https://github.com/user-attachments/assets/a590dba2-2c98-4ed5-85e6-241a41cdcaad" />
+
 
 ---
 
