@@ -276,7 +276,7 @@ Projet réalisé dans le cadre d’un **PFE — Académie Royale Militaire**
 
 ## 👤 Auteur
 
-* Nom : Ton Nom
+* Nom : Mask Mohammed
 * Année : 2026
 * Projet : RAG Defense
 
