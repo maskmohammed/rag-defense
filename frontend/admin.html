@@ -1,15 +1,219 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <title>Admin</title>
-  <link rel="stylesheet" href="/static/style.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RAG Defense Admin</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
-<body>
-  <div class="card">
-    <h2>Admin (placeholder)</h2>
-    <p>Cette page servira pour l’import de documents plus tard.</p>
-    <p><a href="/app">Retour</a></p>
-  </div>
+<body class="app-shell">
+    <div class="app-layout admin-layout">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="brand-card">
+                    <div class="brand-badge">ADM</div>
+                    <div>
+                        <h1>RAG Defense</h1>
+                        <p>Centre de contrôle administrateur</p>
+                    </div>
+                </div>
+
+                <a href="/app" class="sidebar-action admin-link-btn">
+                    <span>↗</span>
+                    Ouvrir l’assistant
+                </a>
+
+                <div class="sidebar-section">
+                    <p class="sidebar-label">Raccourcis admin</p>
+
+                    <button class="suggestion-chip admin-nav-btn" data-target="uploadSection">
+                        Upload & ingestion
+                    </button>
+
+                    <button class="suggestion-chip admin-nav-btn" data-target="documentsSection">
+                        Documents indexés
+                    </button>
+
+                    <button class="suggestion-chip admin-nav-btn" data-target="logsSection">
+                        Journal des requêtes
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-user-card">
+                    <div class="sidebar-user-avatar" id="userAvatar">A</div>
+                    <div class="sidebar-user-meta">
+                        <span class="sidebar-user-title">Session admin</span>
+                        <span id="sessionInfo">Chargement...</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-status-row">
+                    <div class="status-pill" id="health">Backend: ...</div>
+                </div>
+
+                <button id="logoutBtn" class="logout-btn">
+                    Se déconnecter
+                </button>
+            </div>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <div>
+                    <p class="eyebrow">Administration</p>
+                    <h2>Dashboard système</h2>
+                    <p class="admin-subtitle">
+                        Gérez les documents, suivez les requêtes, et contrôlez l’état global de la plateforme.
+                    </p>
+                </div>
+
+                <div class="admin-header-actions">
+                    <button id="refreshAllBtn" class="ghost-btn" type="button">
+                        Actualiser tout
+                    </button>
+                </div>
+            </header>
+
+            <section class="admin-summary-grid">
+                <div class="admin-stat-card">
+                    <span class="admin-stat-label">Statut backend</span>
+                    <strong class="admin-stat-value" id="adminHealthStat">...</strong>
+                    <p class="admin-stat-hint">Disponibilité du service</p>
+                </div>
+
+                <div class="admin-stat-card">
+                    <span class="admin-stat-label">Documents</span>
+                    <strong class="admin-stat-value" id="documentsCount">0</strong>
+                    <p class="admin-stat-hint">Documents présents en base</p>
+                </div>
+
+                <div class="admin-stat-card">
+                    <span class="admin-stat-label">Logs affichés</span>
+                    <strong class="admin-stat-value" id="logsCount">0</strong>
+                    <p class="admin-stat-hint">Requêtes visibles à l’écran</p>
+                </div>
+            </section>
+
+            <section class="admin-panel" id="uploadSection">
+                <div class="admin-panel-head">
+                    <div>
+                        <p class="panel-eyebrow">Ajout de contenu</p>
+                        <h3>Upload & indexation automatique</h3>
+                    </div>
+                </div>
+
+                <div class="upload-hero">
+                    <div class="upload-hero-icon">⤴</div>
+                    <div>
+                        <h4>Ajoutez un document au système</h4>
+                        <p>
+                            Le fichier sera sauvegardé, traité, inséré en base et indexé automatiquement.
+                        </p>
+                    </div>
+                </div>
+
+                <form id="uploadForm" class="upload-form-premium">
+                    <div class="upload-input-wrap">
+                        <label for="uploadFile">Choisir un fichier</label>
+
+                        <input
+                            type="file"
+                            id="uploadFile"
+                            name="file"
+                            class="upload-file-input"
+                            accept=".txt,.docx,.pdf"
+                            required
+                        >
+
+                        <label for="uploadFile" class="upload-dropzone" id="uploadDropzone">
+                            <div class="upload-dropzone-icon">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 3l4.5 4.5-1.4 1.4L13 6.8V16h-2V6.8L8.9 8.9 7.5 7.5 12 3zm-7 14h14v4H5v-4z"/>
+                                </svg>
+                            </div>
+
+                            <div class="upload-dropzone-text">
+                                <span class="upload-dropzone-title">Choisir un fichier</span>
+                                <span class="upload-dropzone-subtitle" id="uploadFileName">
+                                    Aucun fichier sélectionné
+                                </span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="button button-primary">
+                        Uploader et indexer
+                    </button>
+                </form>
+
+                <p id="uploadMessage" class="footer"></p>
+            </section>
+
+            <section class="admin-panel" id="documentsSection">
+                <div class="admin-panel-head">
+                    <div>
+                        <p class="panel-eyebrow">Base documentaire</p>
+                        <h3>Documents indexés</h3>
+                    </div>
+
+                    <button id="refreshDocumentsBtn" class="ghost-btn" type="button">
+                        Actualiser les documents
+                    </button>
+                </div>
+
+                <p id="documentsMessage">Chargement des documents...</p>
+
+                <div class="admin-table-wrap">
+                    <table id="documentsTable" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Titre</th>
+                                <th>Nom du fichier</th>
+                                <th>Type</th>
+                                <th>Date d'import</th>
+                            </tr>
+                        </thead>
+                        <tbody id="documentsTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="admin-panel" id="logsSection">
+                <div class="admin-panel-head">
+                    <div>
+                        <p class="panel-eyebrow">Traçabilité</p>
+                        <h3>Journal des requêtes</h3>
+                    </div>
+
+                    <button id="refreshLogsBtn" class="ghost-btn" type="button">
+                        Actualiser les logs
+                    </button>
+                </div>
+
+                <p id="logsMessage">Chargement des logs...</p>
+
+                <div class="admin-table-wrap">
+                    <table id="logsTable" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Utilisateur</th>
+                                <th>Question</th>
+                                <th>Documents utilisés</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="logsTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+    <div id="toastContainer" class="toast-container"></div>
 </body>
 </html>

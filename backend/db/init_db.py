@@ -1,7 +1,7 @@
 import sqlite3
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parents[3]  # rag-defense-pfe/
+BASE_DIR = Path(__file__).resolve().parents[2]  # rag-defense/
 DB_PATH = BASE_DIR / "data" / "db" / "rag.db"
 SQL_PATH = Path(__file__).resolve().parent / "init_db.sql"
 

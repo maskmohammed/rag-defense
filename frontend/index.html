@@ -2,26 +2,144 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>RAG Defense PFE</title>
-    <link rel="stylesheet" href="static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RAG Defense AI</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
-<body>
+<body class="app-shell">
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="brand-card">
+                    <div class="brand-badge">AI</div>
+                    <div>
+                        <h1>RAG Defense</h1>
+                        <p>Assistant documentaire intelligent</p>
+                    </div>
+                </div>
 
-    <div class="card">
-        <h2>RAG Defense</h2>
+                <button id="newChatBtn" class="sidebar-action">
+                    <span>＋</span>
+                    Nouvelle discussion
+                </button>
 
-        <div class="badge" id="health">
-            Backend: ...
-        </div>
+                <div class="sidebar-section">
+                    <p class="sidebar-label">Suggestions</p>
 
-        <p>Page de test. Hello World !! </p>
+                    <button class="suggestion-chip" data-question="Quelle est la procédure pour activer une unité simulée ?">
+                        Activation d’une unité simulée
+                    </button>
 
-        <p>
-            <a href="/login">Login</a> |
-            <a href="/admin">Admin</a>
-        </p>
+                    <button class="suggestion-chip" data-question="Quelles sont les règles de sécurité ?">
+                        Règles de sécurité
+                    </button>
+
+                    <button class="suggestion-chip" data-question="Que dit le protocole de communication ?">
+                        Protocole de communication
+                    </button>
+
+                    <button class="suggestion-chip" data-question="Quelles sont les consignes de communication ?">
+                        Consignes de communication
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-user-card">
+                    <div class="sidebar-user-avatar" id="userAvatar">U</div>
+                    <div class="sidebar-user-meta">
+                        <span class="sidebar-user-title">Session</span>
+                        <span id="sessionInfo">Chargement...</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-status-row">
+                    <div class="status-pill" id="health">Backend: ...</div>
+                </div>
+
+                <button id="logoutBtn" class="logout-btn">
+                    Se déconnecter
+                </button>
+            </div>
+        </aside>
+
+        <main class="chat-main">
+            <header class="chat-header">
+                <div>
+                    <p class="eyebrow">Assistant IA</p>
+                    <h2>Discussion intelligente</h2>
+                </div>
+
+                <div class="header-actions">
+                    <button id="clearChatBtn" class="ghost-btn" type="button">
+                        Effacer
+                    </button>
+                </div>
+            </header>
+
+            <section class="chat-welcome" id="welcomePanel">
+                <div class="welcome-glow"></div>
+                <div class="welcome-content">
+                    <div class="welcome-icon">✦</div>
+                    <h3>Bonjour, je suis votre assistant IA documentaire</h3>
+                    <p>
+                        Posez une question sur vos documents. Je réponds avec des sources
+                        et des extraits pertinents.
+                    </p>
+
+                    <div class="starter-grid">
+                        <button class="starter-card" data-question="Quelle est la procédure pour activer une unité simulée ?">
+                            <span class="starter-title">Procédure</span>
+                            <span class="starter-text">Interroger les documents opérationnels</span>
+                        </button>
+
+                        <button class="starter-card" data-question="Quelles sont les règles de sécurité ?">
+                            <span class="starter-title">Sécurité</span>
+                            <span class="starter-text">Trouver les consignes et bonnes pratiques</span>
+                        </button>
+
+                        <button class="starter-card" data-question="Que dit le protocole de communication ?">
+                            <span class="starter-title">Communication</span>
+                            <span class="starter-text">Explorer les règles d’échange d’information</span>
+                        </button>
+
+                        <button class="starter-card" data-question="Quels documents parlent de logistique ?">
+                            <span class="starter-title">Logistique</span>
+                            <span class="starter-text">Identifier les sources liées à la coordination</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="chat-thread" id="chatThread"></section>
+
+            <div class="composer-wrapper">
+                <form id="queryForm" class="composer-form">
+                    <div class="composer-box">
+                        <textarea
+                            id="questionInput"
+                            name="question"
+                            class="composer-input"
+                            rows="1"
+                            placeholder="Écrivez votre question..."
+                            required
+                        ></textarea>
+
+                        <div class="composer-actions">
+                            <span class="composer-hint">Entrée pour envoyer</span>
+                            <button type="submit" class="send-btn">
+                                ✦ Envoyer
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <p id="queryMessage" class="query-message"></p>
+            </div>
+        </main>
     </div>
 
-    <script src="static/app.js"></script>
+    <script src="/static/app.js"></script>
+    <div id="toastContainer" class="toast-container"></div>
 </body>
 </html>

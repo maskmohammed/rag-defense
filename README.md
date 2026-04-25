@@ -1,194 +1,286 @@
-📘 README – RAG Defense PFE
-1️⃣ Présentation du projet
+# 🧠 RAG Defense
 
-Ce projet implémente un système RAG (Retrieval-Augmented Generation) local destiné à l’automatisation de la recherche d’information en contexte simulé.
+### Retrieval-Augmented Generation avec LLM Local
 
-Caractéristiques principales :
+![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
+![Flask](https://img.shields.io/badge/Flask-Backend-black)
+![SQLite](https://img.shields.io/badge/Database-SQLite-green)
+![Ollama](https://img.shields.io/badge/LLM-Ollama-orange)
+![Status](https://img.shields.io/badge/Status-Ready-success)
 
-Exécution 100 % locale
+---
 
-Compatible Windows
+## 🚀 Aperçu
 
-Fonctionne hors ligne
+RAG Defense est un système intelligent permettant de poser des questions sur des documents et d’obtenir des réponses générées par un **LLM local**, sans dépendre d’API externes.
 
-Base de données : SQLite
+---
 
-Architecture : Frontend + API REST locale
+## 🧩 Architecture du système
 
-Rôles : ADMIN / USER
+```mermaid
+graph TD
 
-Recherche : Sémantique (Top-K = 5)
+A[Utilisateur] --> B[Frontend]
+B --> C[Backend Flask]
 
-2️⃣ Prérequis
+C --> D[Extraction texte]
+C --> E[Chunking]
+C --> F[Vectorisation TF-IDF]
+C --> G[Recherche]
 
-Avant de commencer, assurez-vous d’avoir :
+G --> H[Documents pertinents]
 
-✅ Windows 10 ou supérieur
+H --> I[LLM Ollama]
+I --> J[Réponse générée]
 
-✅ Python 3.10 ou supérieur
+J --> B
+```
 
-✅ pip installé
+---
 
-Vérification :
+## ⚙️ Fonctionnalités
 
-python --version
-pip --version
+* 🔐 Authentification sécurisée
+* 📄 Upload de documents (PDF, DOCX, TXT)
+* 🔎 Recherche intelligente (TF-IDF)
+* 🤖 Génération avec LLM local (Ollama)
+* 📊 Logs des requêtes
+* 🛠️ Interface Admin
+* ⚡ Pipeline RAG complet
 
-3️⃣ Installation du projet
-3.1 Cloner ou télécharger le projet
+---
 
-Placez-vous dans le dossier souhaité, puis :
+## 📸 Interface (exemple)
 
-cd rag-defense-pfe
+![App Screenshot](https://via.placeholder.com/800x400?text=RAG+Defense+Interface)
 
-3.2 Créer un environnement virtuel (recommandé)
+---
+
+## 🏗️ Structure du projet
+
+```bash
+rag-defense/
+│
+├── backend/
+│   ├── app/
+│   ├── services/
+│   ├── db/
+│   ├── models/
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── templates/
+│   └── static/
+│
+├── data/
+│   ├── docs/
+│   ├── index/
+│   └── db/
+│
+└── README.md
+```
+
+---
+
+## 🖥️ Prérequis
+
+* Python 3.9+
+* pip
+* Git
+* Ollama
+
+---
+
+## 🤖 Installation du LLM
+
+```bash
+ollama serve
+ollama pull llama3
+```
+
+---
+
+## 🚀 Installation
+
+### 1. Cloner
+
+```bash
+git clone https://github.com/TON-USERNAME/rag-defense.git
+cd rag-defense
+```
+
+---
+
+### 2. Environnement virtuel
+
+#### Windows
+
+```bash
 python -m venv venv
-
-
-Activer l’environnement :
-
 venv\Scripts\activate
+```
 
+#### Mac / Linux
 
-Vous devez voir (venv) apparaître dans votre terminal.
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
 
-3.3 Installer les dépendances
+---
+
+### 3. Installer dépendances
+
+```bash
 cd backend
 pip install -r requirements.txt
-cd ..
+```
 
-4️⃣ Initialisation de la base de données
-4.1 Lancer le script d'initialisation
+---
 
-Depuis la racine du projet :
+### 4. Initialiser la base
 
-python backend\db\init_db.py
+```bash
+python db/init_db.py
+```
 
+---
 
-Résultat attendu :
+## 🔐 Création de l’utilisateur Admin
 
-Création du fichier :
+Le projet inclut un script de test permettant de créer automatiquement un utilisateur administrateur.
 
-data/db/rag.db
+### ▶️ Commande
 
+Depuis le dossier `backend` :
 
-Les tables suivantes doivent exister :
+```bash
+# Activer l'environnement virtuel
+venv\Scripts\activate   # Windows
+# ou
+source venv/bin/activate  # Mac/Linux
 
-users
+# Lancer le script de création
+python -m services.test_auth_service
+```
 
-documents
+---
 
-chunks
+### ✅ Résultat attendu
 
-query_logs
+```text
+Utilisateur créé avec id = 1
+Utilisateur trouvé : admin - ADMIN
+Mot de passe correct pour : admin
+```
 
-5️⃣ Lancer le serveur backend
+---
 
-Depuis la racine :
+### 🔑 Identifiants par défaut
 
-cd backend
-python -m app.main
+* **Username** : `admin`
+* **Password** : `admin`
+* **Rôle** : `ADMIN`
 
+---
 
-Le serveur démarre sur :
+### ⚠️ Important
 
-http://localhost:8000
+* Ce script initialise automatiquement la table `users`
+* Il crée un utilisateur administrateur prêt à l’emploi
+* À utiliser uniquement en environnement de développement / démonstration
 
+---
 
-Test rapide :
+### 💡 Astuce
 
-Ouvrir dans navigateur :
+Exécuter ce script après :
 
-http://localhost:8000/health
+```bash
+python db/init_db.py
+```
 
+pour garantir que la base de données est prête.
 
-Réponse attendue :
+---
 
-{ "status": "ok" }
 
-6️⃣ Lancer le frontend
+## ▶️ Lancer le projet
 
-Deux possibilités :
+```bash
+python app/main.py
+```
 
-Option simple (recommandée pour début)
+🔗 Accès : http://127.0.0.1:8000/login
 
-Ouvrir directement :
+---
 
-frontend/login.html
+## 🧠 Fonctionnement RAG
 
+1. Upload document
+2. Extraction texte
+3. Découpage en chunks
+4. Vectorisation TF-IDF
+5. Recherche des passages pertinents
+6. Envoi au LLM
+7. Génération réponse
 
-dans votre navigateur.
+---
 
-Option propre (plus avancée)
+## 📊 Logs
 
-Servir le frontend via le backend (configuration ultérieure).
+Le système enregistre :
 
-7️⃣ Structure du projet
-rag-defense-pfe/
-  frontend/
-  backend/
-  data/
+* Question
+* Réponse
+* Documents utilisés
+* Date
 
-Backend
+---
 
-app/ → logique principale
+## 🧹 Reset base de données
 
-db/ → connexion + script SQL
+```bash
+rm data/db/rag.db
+python backend/db/init_db.py
+```
 
-services/ → logique métier
+---
 
-utils/ → fonctions utilitaires
+## ⚠️ Limitations
 
-Data
+* TF-IDF (pas embeddings avancés)
+* Dépendance aux documents
+* Performance machine
+* LLM local (CPU/RAM)
 
-db/ → base SQLite
+---
 
-docs/demo/ → documents de test
+## 🚀 Améliorations futures
 
-index/vector_store/ → index sémantique
+* FAISS / Chroma DB
+* Embeddings avancés
+* Multi-langue
+* UI moderne
+* Optimisation LLM
 
-logs/ → journaux applicatifs
+---
 
-8️⃣ Mode hors ligne
+## 🎓 Contexte
 
-Le système est conçu pour fonctionner sans connexion Internet :
+Projet réalisé dans le cadre d’un **PFE — Académie Royale Militaire**
 
-Pas d’appel API externe obligatoire
+---
 
-Base locale
+## 👤 Auteur
 
-Index local
+* Nom : Ton Nom
+* Année : 2026
+* Projet : RAG Defense
 
-Documents locaux
+---
 
-9️⃣ Problèmes fréquents
-❌ Erreur : Python non reconnu
+## ⭐ Bonus
 
-Ajouter Python au PATH Windows.
-
-❌ Erreur : Module introuvable
-
-Vérifier que l’environnement virtuel est activé.
-
-❌ Erreur SQLite
-
-Supprimer le fichier :
-
-data/db/rag.db
-
-
-Puis relancer :
-
-python backend\db\init_db.py
-
-🔟 Objectif de la phase actuelle
-
-À ce stade :
-
-La base de données est initialisée
-
-Le serveur démarre
-
-Le frontend est accessible
-
-L’architecture est prête pour le développement des fonctionnalités
+Si ce projet t’aide, n’hésite pas à ⭐ le repo !
